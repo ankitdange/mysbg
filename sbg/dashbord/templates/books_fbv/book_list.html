@@ -1,0 +1,195 @@
+{% extends 'books_fbv/book_form.html' %}
+
+{% block content %}
+    
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL'
+            }
+        ]
+    } );
+} );
+    </script>
+  
+ 
+<style>
+.bb
+{
+    background-color: rgb(13, 206, 240);
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.bbb
+{
+    background-color: rgb(241, 10, 10);
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+
+</style>
+
+
+</head>
+<body>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>{{request.user.is_authenticated}}</h2>
+
+
+
+
+
+    <div class="table-responsive">
+        <table id="example"  class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                       
+                    <tr>    <th>Action</th>
+                            <th>Session</th>
+                            <th>Child ID</th>
+                            <th>Student Name</th>
+                            <th>Father Name</th>
+                            <th>Catogery</th>
+                            <th>Cast Name</th>
+                            <th>Siblings</th>
+                            <th>Admission Number</th>
+                            <th>Entery Of School</th>
+                            <th>Hostel</th>
+                            <th>Divyang</th>
+                            <th>Parents Work</th>
+                            <th>Annual Income</th>
+                            <th>Current School Name</th>
+                            <th>Current Exam Year</th>
+                            <th>Result</th>
+                           <div class="aadhar">
+                            <th>Aadhar</th>
+                            </div>
+                            <th>A/C</th>
+                            <th>KarmKar</th>
+                            <th>Expairy Date Of Karmkar</th>
+
+                           
+                            
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for book in object_list %}
+                    <tr>
+                            <td>    <div class="bb">
+
+
+
+
+
+
+
+
+                                     <a href="{% url 'books_fbv:book_edit' book.id %}" class=""> <font color="white"> Edit </font> </a>
+                                    </div>
+                                    <div class="bbb">
+                                    <a href="{% url 'books_fbv:book_delete' book.id %}" class="bbb"><font color="white"> Delete </font></a>    
+                                    
+                                
+                                
+                                
+                                
+                                
+                                
+                         
+                                
+                                
+                                
+                                
+                                </div>
+                                </td>
+                            <td>{{ book.year }}</td>
+                            <td>{{ book.childid }}</td>
+                            <td>{{ book.name }}</td>
+                            <td>{{ book.father }}</td>
+                            <td>{{ book.cast }}</td>
+                            <td>{{ book.cast_name }}</td>
+                            <td>{{ book.brother_sister }}</td>
+                            <td>{{ book.addmisstion_number }}</td>
+                            <td>{{ book.school_entry_date }}</td>
+                            <td>{{ book.chatravs }}</td>
+                            <td>{{ book.divyang }}</td>
+                            <td>{{ book.occupation_parents }}</td>
+                            <td>{{ book.annual_income }}</td>
+                            <td>{{ book.current_school_name }}</td>
+                            <td>{{ book.current_year_of_exam  }}</td>
+                            <td>{{ book.result }}</td>
+
+                            
+                            <td>{{ book.aadhar_numer  }}</td>
+                            
+                            <td>{{ book.account_number }}
+                                {{book.ifsc_code}}
+                            </td>
+                            <td>{{ book.karmkar }}</td>
+                            <td>{{ book.exp_date }}</td>
+
+                           
+                            
+                            
+                    </tr>
+                    {% endfor %}
+                        
+                </tbody>
+                
+            </table>
+        </div>
+
+    
+        
+
+
+</body>
+</html>
+
+{% endblock %}

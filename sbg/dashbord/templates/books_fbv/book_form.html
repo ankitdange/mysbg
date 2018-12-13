@@ -1,0 +1,238 @@
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SBG</title>
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.16/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.16/js/mdb.min.js"></script>
+
+<link rel="icon" type="image/png" href="{% static 'image/favicon.ico' %}"/>
+
+
+
+
+
+<style>
+.row
+{
+  font-weight: bold;
+  margin: 0%;
+}
+.col-sm-2
+{
+  font-size: 13px;
+  padding: 0%;
+  margin: 0%;
+  
+}
+
+img
+{
+  width: 35em;
+}
+
+.card
+{
+  margin-left: 20px;
+  width: 100px;
+  height: 80px;
+  text-align: center;
+  background-color: rgb(153, 39, 206);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+
+}
+.card h4
+{
+  margin-top: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+.card h3
+{
+  color: white;
+  font-weight: bold;
+  margin-top: -10px;
+}
+.button
+{
+  background-color: rgb(51, 209, 236);
+  color: white;
+  border: none;
+  width: 15em;
+  height: 3em;
+  margin-left: 10px; 
+}
+.button:hover
+{
+  background-color: rgb(30, 161, 170);
+  box-shadow: 0px 1px 15px #272525;
+  cursor: pointer;
+}
+</style>
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">SBG</a>
+      
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+      
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'books_fbv:book_new' %}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'books_fbv:book_list' %}">Show Data</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+      
+            <!-- Dropdown -->
+            
+      
+          </ul>
+          <!-- Links -->
+      
+          
+        </div>
+        <!-- Collapsible content -->
+      
+      </nav>
+      <!--/.Navbar-->
+
+      {% block content %}
+
+
+
+
+
+  
+
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-sm-2">
+        {{ form.year|as_crispy_field }}
+        {{ form.childid|as_crispy_field }}
+        {{ form.name|as_crispy_field }}
+        {{ form.father|as_crispy_field }}
+        {{ form.cast|as_crispy_field }}
+        {{ form.cast_name|as_crispy_field }}
+        {{ form.student_class|as_crispy_field }}
+        </div>
+        <div class="col-sm-2">
+            {{ form.brother_sister|as_crispy_field }}
+            {{ form.addmisstion_number|as_crispy_field }}
+            {{ form.school_entry_date|as_crispy_field }}
+            {{ form.chatravs|as_crispy_field }}
+            {{ form.divyang|as_crispy_field }}
+            {{ form.occupation_parents|as_crispy_field }}
+            {{ form.annual_income|as_crispy_field }}
+
+        </div>
+        <div class="col-sm-2">
+            
+            {{ form.current_school_name|as_crispy_field }}
+            {{ form.current_year_of_exam|as_crispy_field }}
+            {{ form.result|as_crispy_field }}
+            {{ form.aadhar_numer|as_crispy_field }}
+            {{ form.ifsc_code|as_crispy_field }}
+            {{ form.account_number|as_crispy_field }}
+            {{ form.portel_issued_ammount|as_crispy_field }}
+
+
+        </div>
+        <div class="col-sm-2">
+            {{ form.karmkar|as_crispy_field }}
+            {{ form.exp_date|as_crispy_field }}
+            <button class="button">Submit</button>
+            <img src="{% static 'image/kids.png' %}" alt="">
+        </div>
+        <div class="col-sm-2">
+         <div class="card">
+           <h4>Student</h4>
+           <h3>{{stucnt}}</h3>
+         </div>
+        </div>
+        </div>
+        
+    </form>
+  
+
+
+</body>
+
+
+
+{% endblock %}
+
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+          <a href="">Sundarbai Gupta School Khandwa</a> <br>
+            <p> Devloped By: </p> <a href="https://twitter.com/ankit_dange"> Ankit Dange</a>
+
+
+       
+        
+    </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
+
+
+
+
+
+   
+
+</html>
+
+  
